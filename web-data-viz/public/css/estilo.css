@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+  background-color: #303030;
 }
 
 :root {
@@ -17,13 +17,15 @@ body {
 
 .container {
   display: flex;
-  width: 80%;
-  margin: auto;
+  width: 100%;
+  margin: 0;
 }
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
+  background-color: #181818;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .header .container {
@@ -34,7 +36,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: #830000;
 }
 
 .agora {
@@ -42,18 +44,18 @@ body {
 }
 
 .navbar {
-  width: 300px;
+  width: 400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #830000;
 }
 
 .titulo {
-  color: #32b9cd;
+  color: #B60000;
   width: fit-content;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .header h1 {
@@ -65,7 +67,7 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('../assets/imgs/MuayThaibanner.png');
   background-size: cover;
 }
 
@@ -79,69 +81,143 @@ body {
   width: 50%;
   margin: 0;
   padding: 0;
-  font-size: 36px;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .banner .container span {
   font-weight: 800;
+  color: #980000;
 }
 
 /* MISSÃO VISÃO VALORES */
 
 .social {
-  background-color: #e5e5e5;
+  background-color: #414040;
   display: flex;
 }
 
 .social .container {
   justify-content: center;
+  flex-direction: column;
 }
 
-.box img {
-  width: 170px;
-}
+  .boxes{
+    display: flex;
+    align-items: center;
+    height: 350px;
+  }
+
+ .boxes img {
+  height: 305px;
+  padding-right: 80px;
+  padding-left: 80px;
+} 
 
 .social .container .boxes {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 30px 0;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
-.social p {
-  text-align: center;
-}
+ .social p {
+  font-weight: bold;
+} 
 
 .box {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100vh;
+  color: white;
+  padding-left: 80px;
+}
+
+.negrito_vermelho{
+  color: #B60000;
+}
+
+.negrito_azul{
+  color: #7D9BE6;
+}
+
+/* .social .container .boxes .box h1{
+  padding-left: 80px;
+} */
+
+/* MINHA HISTÓRIA */
+
+.minha_historia{
+  background-color: #303030;
+  text-align: center;
+  color: white;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.texto_minha_historia{
+  text-align: start;
+  padding-left: 50px;
+  padding-right: 100px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.graduacao{
+  padding-top: 50px;
+  text-align: start;
+  padding-left: 200px;
+  padding-right: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.graduados{
+  padding-top: 50px;
+  text-align: start;
+  padding-left: 280px;
+  padding-right: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.texto_e_imagem_historia{
+  display: flex;
   align-items: center;
 }
 
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #181818;
   height: 150px;
   color: #fff;
   display: flex;
   font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
 }
 
 .footer .container {
   justify-content: center;
   text-align: center;
+  align-items: end;
 }
 
-.footer .container .version {
+/* .footer .container .version {
   font-size: 12px;
-}
+} */
 
 /* LOGIN */
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('../assets/imgs/MuayThaibanner.png');
   background-size: cover;
 }
 
