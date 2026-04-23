@@ -9,9 +9,9 @@ body {
 
 :root {
   --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(105vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(105vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
@@ -229,12 +229,12 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: #303030;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #B60000;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -259,7 +259,7 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #7D9BE6;
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -290,7 +290,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #ED145B;
+  background-color: #B60000;
   width: 120px;
   height: 30px;
   align-self: center;
