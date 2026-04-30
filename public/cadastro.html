@@ -88,16 +88,16 @@
 
   <!--footer inicio-->
   <div class="footer">
-      <div class="container">
-        <!-- <span>Autor: Carlos Eduardo de Arruda Chaves</span> -->
-        <h1>Muay Thai é <span style="color: #B60000;">luta</span>, não <span style="color: #B60000;">briga</span></h1>
-        <!--<span>Aluno SPTech &hearts;</span> -->
-      </div>
-      <p style="display: flex; justify-content: space-between; width: 90%;">
-        <span>Autor: Carlos Eduardo de Arruda Chaves</span>
-        <span>Feito por Aluno SPTech &hearts;</span>
-      </p>
+    <div class="container">
+      <!-- <span>Autor: Carlos Eduardo de Arruda Chaves</span> -->
+      <h1>Muay Thai é <span style="color: #B60000;">luta</span>, não <span style="color: #B60000;">briga</span></h1>
+      <!--<span>Aluno SPTech &hearts;</span> -->
     </div>
+    <p style="display: flex; justify-content: space-between; width: 90%;">
+      <span>Autor: Carlos Eduardo de Arruda Chaves</span>
+      <span>Feito por Aluno SPTech &hearts;</span>
+    </p>
+  </div>
   <!--footer fim-->
 </body>
 
@@ -134,14 +134,14 @@
 
       finalizarAguardar();
       return false;
-    } else if(senhaVar != confirmacaoSenhaVar) {
+    } else if (senhaVar != confirmacaoSenhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Confirmação de senha incorreta)";
 
       finalizarAguardar();
       return false;
-    } else if(!emailVar.includes("@")) {
+    } else if (!emailVar.includes("@")) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Email inválido)";
@@ -198,6 +198,10 @@
           limparFormulario();
           finalizarAguardar();
         } else {
+          cardErro.style.display = "block"
+          mensagem_erro.innerHTML = "(E-mail já cadastrado no sistema)";
+          finalizarAguardar();
+          return false;
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
