@@ -41,10 +41,10 @@
     <!-- simulador inicio -->
     <div class="simulador">
         <div class="container">
-            <h2 style="display: flex; justify-content: center;">Simulador</h2>
+            <h2 style="display: flex; justify-content: center; font-size: 40px; color: #121212;">Simulador</h2>
             <div class="quadrados">
                 <div class="quadrado">
-                    <h1 style="display: flex; justify-content: center;">Você</h1>
+                    <h1 style="display: flex; justify-content: center; color: #7D9BE6;">Você</h1>
                     <p style="padding: 20px;">
                         <span>Diga o seu Kruang:</span>
                         <select name="kruang" id="kruang">
@@ -64,17 +64,22 @@
                         <input style="border-radius: 3px;" type="text" id="qtd_meses" placeholder="Ex: 7">
                     </p>
                 </div>
-                <div class="quadrado">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                    dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis
-                    quisquam
-                    laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate
-                    amet
-                    reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.
+                <div class="quadrado" style="height: 350px;">
+                    <div style="height: 250px;">
+                        <h1 style="display: flex; justify-content: center;">Resultado</h1>
+                        <p style="padding: 20px;">
+                            <span id="oponente_nome"></span>
+                        </p>
+                        <p style="padding: 20px;">
+                            <span id="oponente_resultado"></span>
+                        </p>
+                    </div>
+                    <p style="display: flex; justify-content: center;">
+                        <button class="caixa_lutar" style="transform: scale(0.7);" onclick="proximo()">Próximo adversário</button>
+                    </p>
                 </div>
                 <div class="quadrado">
-                    <h1 style="display: flex; justify-content: center;">Oponentes</h1>
+                    <h1 style="display: flex; justify-content: center; color: #B60000;">Oponentes</h1>
                     <p style="padding: 20px;">
                         <span>Diga o nome do seu oponente:</span>
                         <input style="border-radius: 3px;" type="text" id="id_nome" placeholder="Ex: Thiago">
@@ -98,37 +103,38 @@
                         <input style="border-radius: 3px;" type="text" id="qtd_meses_oponente" placeholder="Ex: 7">
                     </p>
                     <p style="display: flex; justify-content: center;">
-                        <button onclick="cadastrar_oponente()">Cadastrar</button>
+                        <button class="caixa_lutar" style="transform: scale(0.7);" onclick="cadastrar_oponente()">Cadastrar</button>
                     </p>
                 </div>
             </div>
-            <div style="display: flex; justify-content: center; padding-top: 5%;">
+            <div style="display: flex; justify-content: center;">
                 <button onclick="iniciar()" class="caixa_lutar">Lutar</button>
             </div>
         </div>
     </div>
-        <!-- simulador fim -->
+    <!-- simulador fim -->
 
-        <!--footer inicio-->
-        <div class="footer">
-            <div class="container">
-                <!-- <span>Autor: Carlos Eduardo de Arruda Chaves</span> -->
-                <h1>Muay Thai é <span style="color: #B60000;">luta</span>, não <span
-                        style="color: #B60000;">briga</span></h1>
-                <!--<span>Aluno SPTech &hearts;</span> -->
-            </div>
-            <p style="display: flex; justify-content: space-between; width: 90%;">
-                <span>Autor: Carlos Eduardo de Arruda Chaves</span>
-                <span>Feito por Aluno SPTech &hearts;</span>
-            </p>
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <!-- <span>Autor: Carlos Eduardo de Arruda Chaves</span> -->
+            <h1>Muay Thai é <span style="color: #B60000;">luta</span>, não <span style="color: #B60000;">briga</span>
+            </h1>
+            <!--<span>Aluno SPTech &hearts;</span> -->
         </div>
-        <!--footer fim-->
+        <p style="display: flex; justify-content: space-between; width: 90%;">
+            <span>Autor: Carlos Eduardo de Arruda Chaves</span>
+            <span>Feito por Aluno SPTech &hearts;</span>
+        </p>
+    </div>
+    <!--footer fim-->
 
 
 </body>
 <script>
     let nomes = []
     let pontos_totais_oponente = []
+    let resultados = []
     function cadastrar_oponente() {
         let nome = id_nome.value
         let meses = Number(qtd_meses_oponente.value)
@@ -144,6 +150,8 @@
     }
 
     function iniciar() {
+        contador = 0
+        resultados = []
         let nivel = Number(kruang.value)
         let meses = Number(qtd_meses.value)
         console.log(nivel);
@@ -155,16 +163,27 @@
         for (i = 0; i < nomes.length; i++) {
             if (pontos_totais * 0.7 > pontos_totais_oponente[i]) {
                 console.log(`Você provavelmente vence contra ${nomes[i]}!`);
+                resultados.push(`Você provavelmente vence contra ${nomes[i]}!`)
             } else if (pontos_totais * 1.3 < pontos_totais_oponente[i]) {
                 console.log(`Voce provavelmente perde contra ${nomes[i]}!`);
+                resultados.push(`Voce provavelmente perde contra ${nomes[i]}!`)
             } else {
                 console.log(`A luta é justa contra ${nomes[i]}!`);
+                resultados.push(`A luta é justa contra ${nomes[i]}!`)
             }
 
         }
         console.log(pontos_totais);
         console.log(pontos_totais_oponente);
 
+    }
+
+    let contador = 0
+    function proximo() {
+        oponente_nome.innerHTML = `Oponente: ${nomes[contador]}`
+        console.log(resultados[contador]);
+        oponente_resultado.innerHTML = `Resultado provável: ${resultados[contador]}`
+        contador++
     }
 </script>
 

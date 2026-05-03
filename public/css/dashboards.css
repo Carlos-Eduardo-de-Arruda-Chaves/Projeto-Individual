@@ -194,6 +194,16 @@ body {
   width: 100%;
   align-items: center;
   color: white;
+  background-color: #303030;
+}
+
+.grafico_estatico{
+  background-color: rgb(189, 189, 246);
+  height: 80%;
+  width: 80%;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-aquario {
