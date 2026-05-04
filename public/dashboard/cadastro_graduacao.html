@@ -48,7 +48,7 @@
     </div>
     <div class="container">
       <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
+        <h2>Atualize seu Kruang!</h2>
         <div class="formulario">
           <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
@@ -101,9 +101,10 @@
 </html>
 
 <script>
-
+    emailVar = sessionStorage.EMAIL_USUARIO
+    console.log(emailVar);
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  // let listaEmpresasCadastradas = [];
 
   function cadastrar_graduacao() {
     // aguardar();
@@ -176,7 +177,8 @@
         // Agora vá para o arquivo routes/usuario.js
         kruangServer: kruangVar,
         equipeServer: equipeVar,
-        dataServer: dataVar// ,
+        dataServer: dataVar,
+        emailServer: emailVar// ,
         // idEmpresaVincularServer: idEmpresaVincular
       }),
     })
@@ -187,10 +189,10 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            "Cadastro realizado com sucesso! Redirecionando para tela de Cards...";
 
           setTimeout(() => {
-            window.location = "login.html";
+            window.location = "cards.html";
           }, "2000");
 
           limparFormulario();
