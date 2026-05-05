@@ -34,18 +34,18 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Dashboard</h3>
+                <h3>Gráfico</h3>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráfico</h3>
+                    <h3>DashBoard</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./cadastro_graduacao.html">
-                    <h3>Registros</h3>
+                    <h3>Registrar Kruang/Equipe</h3>
                 </a>
             </div>
 
@@ -56,7 +56,8 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
+            <div class="informacao_grafico">
+                <h1>Registros de treinos diários</h1>
             </div>
             <div class="area-parametros-alerta">
                 <p class="titulo-legenda">
@@ -64,7 +65,7 @@
                 </p>
                 <div class="parametros-alerta">
                     <div class="item-regua perigo-frio">
-                        <p>Muito pouco</p>
+                        <p>Insuficiente</p>
                         <p>&lt;15 Minutos</p>
                     </div>
                     <div class="item-regua alerta-frio">
@@ -73,23 +74,26 @@
                     </div>
                     <div class="item-regua ideal">
                         <p>Ideal</p>
-                        <p>1 Hora</p>
+                        <p>60 Minutos</p>
                     </div>
                     <div class="item-regua alerta-quente">
                         <p>acima da média</p>
-                        <p>&gt;1 Hora e 30 Minutos</p>
+                        <p>&gt;90 Minutos</p>
                     </div>
                     <div class="item-regua perigo-quente">
-                        <p>Exagero</p>
-                        <p>&gt;2 Horas</p>
+                        <p>Intensivo</p>
+                        <p>&gt;120 Minutos</p>
                     </div>
                 </div>
             </div>
-        
+            <div id="alerta">
+            </div>
+            <div style="padding-top: 35px;">
             <div class="cards">
-                <div class="grafico_estatico">
+                <div class="grafico">
                     <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
                 </div>
+            </div>
             </div>
 
         </div>
@@ -121,24 +125,27 @@
     // }
 
     const labels = [
-    'Branco',
-    'Branco ponta vermelha',
-    'Vermelha',
-    'Vermelha ponta azul claro',
-    'Azul claro',
-    'Azul claro ponta azul escuro',
-    'Azul escuro',
-    'Azul escuro ponta preta',
-    'Preta',
+    '2026-04-29',
+    '2026-04-30',
+    '2026-05-01',
+    '2026-05-02',
+    '2026-05-03',
+    '2026-05-04',
+    '2026-05-05'
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Tempo de treino em anos',
-      backgroundColor: '#B60000',
-      borderColor: '#B60000',
-      data: [0 ,1, 2, 3, 4, 5, 6, 7, 8],
+      label: 'Treino insuficiente',
+      backgroundColor: '#a20e0e',
+      borderColor: '#a20e0e',
+      data: [15 ,15, 15, 15, 15, 15, 15],
+    }, {
+      label: 'Treino intensivo',
+      backgroundColor: '#a20e0e',
+      borderColor: '#a20e0e',
+      data: [120 ,120, 120, 120, 120, 120, 120],
     }]
   };
 

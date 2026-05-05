@@ -167,23 +167,23 @@ body {
 }
 
 .perigo-frio {
-  background-color: #5c6bc0;
+  background-color: #a20e0e;
 }
 
 .perigo-quente {
-  background-color: #ff7043;
+  background-color: #a20e0e;
 }
 
 .alerta-frio {
-  background-color: #42a5f5;
+  background-color: #d65c5c;
 }
 
 .alerta-quente {
-  background-color: #ffee58;
+  background-color: #d65c5c;
 }
 
 .ideal {
-  background-color: #9ccc65;
+  background-color:#7D9BE6;
 }
 
 .cards {
@@ -197,7 +197,14 @@ body {
   background-color: #303030;
 }
 
-.grafico_estatico{
+.informacao_grafico{
+  display: flex;
+  justify-content: center;
+  color: #B60000;
+  font-style: italic;
+}
+
+.grafico{
   background-color: rgb(189, 189, 246);
   height: 80%;
   width: 80%;
