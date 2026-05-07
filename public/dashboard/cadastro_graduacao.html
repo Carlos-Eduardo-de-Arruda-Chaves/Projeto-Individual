@@ -62,15 +62,30 @@
           -->
           <div class="campo">
             <span>Kruang:</span>
-            <input id="kruang_input" type="text" placeholder="Seu Kruang" />
+            <select name="kruang" id="kruang_input">
+                            <option value="1">Kruang branco</option>
+                            <option value="2">Kruang branco ponta vermelha</option>
+                            <option value="3">Kruang vermelho</option>
+                            <option value="4">Kruang vermelho ponta azul claro</option>
+                            <option value="5">Kruang azul claro</option>
+                            <option value="6">Kruang azul claro ponta azul escuro</option>
+                            <option value="7">Kruang azul escuro</option>
+                            <option value="8">Kruang preto ponta preta</option>
+                            <option value="9">Kruang preto</option>
+                        </select>
           </div>
           <div class="campo">
             <span>Equipe:</span>
-            <input id="equipe_input" type="text" placeholder="Equipe São Paulo" />
+            <select name="kruang" id="equipe_input">
+                            <option value="1">Equipe de São Paulo</option>
+                            <option value="2">Equipe de Minas Gerais</option>
+                            <option value="3">Equipe do Rio de Janeiro</option>
+                            <option value="4">Equipe de Santa Catarina</option>
+                        </select>
           </div>
           <div class="campo">
             <span>Data de quando começou a treinar:</span>
-            <input id="data_input" type="password" placeholder="2018-09-14" />
+            <input id="data_input" type="date" placeholder="2018-09-14" />
           </div>
           <button class="botao" onclick="cadastrar_graduacao()">Cadastrar</button>
         </div>
@@ -189,7 +204,7 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Cards...";
+            "Informações registradas com sucesso, será exibido ao logar novamente!";
 
           setTimeout(() => {
             window.location = "cards.html";

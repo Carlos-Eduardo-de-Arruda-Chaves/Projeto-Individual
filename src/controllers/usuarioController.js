@@ -24,7 +24,9 @@ function autenticar(req, res) {
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha// ,
+                                        senha: resultadoAutenticar[0].senha,
+                                        kruang: resultadoAutenticar[0].kruang,
+                                        equipe: resultadoAutenticar[0].equipe// ,
                                         // aquarios: resultadoAquarios
                                     });
                         /*

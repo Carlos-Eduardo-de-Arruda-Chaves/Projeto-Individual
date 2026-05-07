@@ -30,7 +30,13 @@
             <h1><span style="color: #B60000;">Muay</span> <span style="color: #7D9BE6;">Thai</span></h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario" style="color:#B60000;">usuário</span>!</h3>
+                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario" style="color:#ffffff;">usuário</span>!</h3>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span></h4>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe" style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
             </div>
 
             <div class="btn-nav">
@@ -104,7 +110,12 @@
 
 <script>
     email = sessionStorage.EMAIL_USUARIO
+    id = sessionStorage.ID_USUARIO
     console.log(email);
+    console.log(id);
+    if(id <= 4) verificar_mestre.innerHTML = `Mestre`
+    
+    
     
     // function exibirAquarios() {
     //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
@@ -143,8 +154,8 @@
       data: [15 ,15, 15, 15, 15, 15, 15],
     }, {
       label: 'Treino intensivo',
-      backgroundColor: '#a20e0e',
-      borderColor: '#a20e0e',
+      backgroundColor: '#b0c049',
+      borderColor: '#b0c049',
       data: [120 ,120, 120, 120, 120, 120, 120],
     }]
   };

@@ -19,6 +19,7 @@ function cadastrar(kruang, equipe, data, email/*, fkEmpresa*/) {
         UPDATE usuario 
     SET fk_graduacao = '${kruang}',
         fk_equipe = '${equipe}',
+        fk_mestre = '${equipe}',
         dt_inicio_treino = '${data}'
     WHERE email = '${email}'; 
     `;

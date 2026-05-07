@@ -392,7 +392,13 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #7D9BE6;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.hello h4 {
+  color: #7D9BE6;
   font-weight: 300;
   font-size: 1.2rem;
 }
