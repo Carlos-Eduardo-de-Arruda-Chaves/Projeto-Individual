@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Página Inicial</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -19,7 +19,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
+<body onload="validarSessaoMural(), listarInfosDeUm()" style="background-color: #161618;">
     <!-- <body onload="validarSessao()"> -->
 
     <div class="janela">
@@ -27,10 +27,19 @@
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1><span style="color: #B60000;">Muay</span> <span style="color: #7D9BE6;">Thai</span></h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario"
+                        style="color:#ffffff;">usuário</span>!</h3>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span>
+                </h4>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe"
+                        style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
             </div>
 
             <div class="btn-nav-white">
@@ -47,7 +56,13 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Mural de Dicas</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./cadastro_graduacao.html">
+                    <h3>Registrar Kruang/Equipe</h3>
                 </a>
             </div>
 
@@ -99,6 +114,10 @@
 </html>
 
 <script>
+
+    b_kruang.innerHTML = sessionStorage.KRUANG_USUARIO;
+    b_equipe.innerHTML = sessionStorage.EQUIPE_USUARIO;
+
     function listarInfosDeUm() {
         console.log("Criar função de trazer informações de post escolhido");
     }

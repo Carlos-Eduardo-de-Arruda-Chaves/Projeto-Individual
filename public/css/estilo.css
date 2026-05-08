@@ -267,7 +267,7 @@ body {
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 2px solid #7D9BE6;
   background-color: white;
   color: gray;
   height: 36px;
@@ -326,7 +326,7 @@ body {
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #B60000 3px solid;
   padding: 10px;
   margin-right: 10%;
 }
@@ -348,7 +348,7 @@ body {
 
 input {
   margin-bottom: 10px;
-  border: 2px solid #32b9cd;
+  border: 2px solid #7D9BE6;
   padding: 10px;
   text-align: center;
   border-radius: 10px;
@@ -362,7 +362,7 @@ input {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #ED145B;
+  background-color: #B60000;
   width: 120px;
   align-self: center;
   margin-top: 5px;

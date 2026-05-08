@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -32,15 +32,24 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1>AquaTech</h1>
+            <h1><span style="color: #B60000;">Muay</span> <span style="color: #7D9BE6;">Thai</span></h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario"
+                        style="color:#ffffff;">usuário</span>!</h3>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span>
+                </h4>
+            </div>
+            <div class="hello">
+                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe"
+                        style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Gráfico </h3>
                 </a>
             </div>
 
@@ -52,7 +61,13 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Mural de Dicas</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./cadastro_graduacao.html">
+                    <h3>Registrar Kruang/Equipe</h3>
                 </a>
             </div>
 
@@ -63,13 +78,16 @@
         </div>
 
         <div class="dash">
+            <div class="informacao_grafico">
+                <h1>Registros de treinos diários</h1>
+            </div>
             <div class="area-parametros-alerta">
                 <p class="titulo-legenda">
                     Legenda - Recomendação de treino
                 </p>
                 <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Muito pouco</p>
+                    <div class="item-regua perigo-frio" style="border-bottom-left-radius: 20px;">
+                        <p>Insuficiente</p>
                         <p>&lt;15 Minutos</p>
                     </div>
                     <div class="item-regua alerta-frio">
@@ -84,8 +102,8 @@
                         <p>acima da média</p>
                         <p>&gt;90 Minutos</p>
                     </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Exagero</p>
+                    <div class="item-regua perigo-quente" style="border-bottom-right-radius: 20px;">
+                        <p>Intensivo</p>
                         <p>&gt;120 Minutos</p>
                     </div>
                 </div>
@@ -107,7 +125,11 @@
 </html>
 
 <script>
+    console.log(sessionStorage.KRUANG_USUARIO);
+
+    b_kruang.innerHTML = sessionStorage.KRUANG_USUARIO;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_equipe.innerHTML = sessionStorage.EQUIPE_USUARIO;
 
     let proximaAtualizacao;
 

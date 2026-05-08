@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="./../css/dashboards.css">
   <link rel="stylesheet" href="./../css/estilo.css" />
-  <link rel="icon" href="./assets/icon/muaythai_valores.png" />
+  <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -63,25 +63,25 @@
           <div class="campo">
             <span>Kruang:</span>
             <select name="kruang" id="kruang_input">
-                            <option value="1">Kruang branco</option>
-                            <option value="2">Kruang branco ponta vermelha</option>
-                            <option value="3">Kruang vermelho</option>
-                            <option value="4">Kruang vermelho ponta azul claro</option>
-                            <option value="5">Kruang azul claro</option>
-                            <option value="6">Kruang azul claro ponta azul escuro</option>
-                            <option value="7">Kruang azul escuro</option>
-                            <option value="8">Kruang preto ponta preta</option>
-                            <option value="9">Kruang preto</option>
-                        </select>
+              <option value="1">Kruang branco</option>
+              <option value="2">Kruang branco ponta vermelha</option>
+              <option value="3">Kruang vermelho</option>
+              <option value="4">Kruang vermelho ponta azul claro</option>
+              <option value="5">Kruang azul claro</option>
+              <option value="6">Kruang azul claro ponta azul escuro</option>
+              <option value="7">Kruang azul escuro</option>
+              <option value="8">Kruang azul escuro ponta preta</option>
+              <option value="9">Kruang preto</option>
+            </select>
           </div>
           <div class="campo">
             <span>Equipe:</span>
             <select name="kruang" id="equipe_input">
-                            <option value="1">Equipe de São Paulo</option>
-                            <option value="2">Equipe de Minas Gerais</option>
-                            <option value="3">Equipe do Rio de Janeiro</option>
-                            <option value="4">Equipe de Santa Catarina</option>
-                        </select>
+              <option value="1">Equipe de São Paulo</option>
+              <option value="2">Equipe de Minas Gerais</option>
+              <option value="3">Equipe do Rio de Janeiro</option>
+              <option value="4">Equipe de Santa Catarina</option>
+            </select>
           </div>
           <div class="campo">
             <span>Data de quando começou a treinar:</span>
@@ -116,13 +116,13 @@
 </html>
 
 <script>
-    emailVar = sessionStorage.EMAIL_USUARIO
-    console.log(emailVar);
-    // Definindo os Kruangs possíveis
-    var kruangs = ["Branco", "Branco Ponta Vermelha", "Vermelha", "Vermelha ponta azul claro", "Azul claro", "Azul claro ponta azul escuro", "Azul escuro", "Azul escuro ponta preta", "Preta"]
-    // Definindo as equipes possíveis
-    var equipes = ["Equipe de São Paulo", "Equipe de Minas Gerais", "Equipe do Rio de Janeiro", "Equipe de Santa Catarina"]
-    // Array para armazenar empresas cadastradas para validação de código de ativação 
+  emailVar = sessionStorage.EMAIL_USUARIO
+  console.log(emailVar);
+  // Definindo os Kruangs possíveis
+  var kruangs = ["Branco", "Branco Ponta Vermelha", "Vermelha", "Vermelha ponta azul claro", "Azul claro", "Azul claro ponta azul escuro", "Azul escuro", "Azul escuro ponta preta", "Preta"]
+  // Definindo as equipes possíveis
+  var equipes = ["Equipe de São Paulo", "Equipe de Minas Gerais", "Equipe do Rio de Janeiro", "Equipe de Santa Catarina"]
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
   // let listaEmpresasCadastradas = [];
 
   function cadastrar_graduacao() {
@@ -151,21 +151,21 @@
 
       finalizarAguardar();
       return false;
-    // } else if (senhaVar != confirmacaoSenhaVar) {
-    //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
-    //     "(Confirmação de senha incorreta)";
+      // } else if (senhaVar != confirmacaoSenhaVar) {
+      //   cardErro.style.display = "block";
+      //   mensagem_erro.innerHTML =
+      //     "(Confirmação de senha incorreta)";
 
-    //   finalizarAguardar();
-    //   return false;
-    // } else if (!emailVar.includes("@")) {
-    //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
-    //     "(Email inválido)";
+      //   finalizarAguardar();
+      //   return false;
+      // } else if (!emailVar.includes("@")) {
+      //   cardErro.style.display = "block";
+      //   mensagem_erro.innerHTML =
+      //     "(Email inválido)";
 
-    //   finalizarAguardar();
-    //   return false;
-    // 
+      //   finalizarAguardar();
+      //   return false;
+      // 
     } else {
       setInterval(sumirMensagem, 5000);
     }
@@ -207,12 +207,12 @@
         sessionStorage.KRUANG_USUARIO = kruangs[kruangVar - 1]
         console.log(equipeVar);
         sessionStorage.EQUIPE_USUARIO = equipes[equipeVar - 1]
-        
+
         if (resposta.ok) {
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Informações registradas com sucesso, será exibido ao logar novamente!";
+            "Informações registradas com sucesso!";
 
           setTimeout(() => {
             window.location = "cards.html";
@@ -233,7 +233,7 @@
         finalizarAguardar();
       });
 
-      
+
     return false;
   }
 

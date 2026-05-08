@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +30,16 @@
             <h1><span style="color: #B60000;">Muay</span> <span style="color: #7D9BE6;">Thai</span></h1>
 
             <div class="hello">
-                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario" style="color:#ffffff;">usuário</span>!</h3>
+                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario"
+                        style="color:#ffffff;">usuário</span>!</h3>
             </div>
             <div class="hello">
-                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span></h4>
+                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span>
+                </h4>
             </div>
             <div class="hello">
-                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe" style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
+                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe"
+                        style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
             </div>
 
             <div class="btn-nav">
@@ -46,6 +49,12 @@
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
                     <h3>DashBoard</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Dicas</h3>
                 </a>
             </div>
 
@@ -70,7 +79,7 @@
                     Legenda - Recomendação de treino
                 </p>
                 <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
+                    <div class="item-regua perigo-frio" style="border-bottom-left-radius: 20px;">
                         <p>Insuficiente</p>
                         <p>&lt;15 Minutos</p>
                     </div>
@@ -86,7 +95,7 @@
                         <p>acima da média</p>
                         <p>&gt;90 Minutos</p>
                     </div>
-                    <div class="item-regua perigo-quente">
+                    <div class="item-regua perigo-quente" style="border-bottom-right-radius: 20px;">
                         <p>Intensivo</p>
                         <p>&gt;120 Minutos</p>
                     </div>
@@ -95,11 +104,11 @@
             <div id="alerta">
             </div>
             <div style="padding-top: 35px;">
-            <div class="cards">
-                <div class="grafico">
-                    <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
+                <div class="cards">
+                    <div class="grafico">
+                        <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
+                    </div>
                 </div>
-            </div>
             </div>
 
         </div>
@@ -113,10 +122,10 @@
     id = sessionStorage.ID_USUARIO
     console.log(email);
     console.log(id);
-    if(id <= 4) verificar_mestre.innerHTML = `Mestre`
-    
-    
-    
+    if (id <= 4) verificar_mestre.innerHTML = `Mestre`
+
+
+
     // function exibirAquarios() {
     //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
     //         document.getElementById("cardAquarios").innerHTML += `
@@ -136,46 +145,46 @@
     // }
 
     const labels = [
-    '2026-04-29',
-    '2026-04-30',
-    '2026-05-01',
-    '2026-05-02',
-    '2026-05-03',
-    '2026-05-04',
-    '2026-05-05'
-  ];
+        '2026-04-29',
+        '2026-04-30',
+        '2026-05-01',
+        '2026-05-02',
+        '2026-05-03',
+        '2026-05-04',
+        '2026-05-05'
+    ];
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Treino insuficiente',
-      backgroundColor: '#a20e0e',
-      borderColor: '#a20e0e',
-      data: [15 ,15, 15, 15, 15, 15, 15],
-    }, {
-      label: 'Treino intensivo',
-      backgroundColor: '#b0c049',
-      borderColor: '#b0c049',
-      data: [120 ,120, 120, 120, 120, 120, 120],
-    }]
-  };
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Treino insuficiente',
+            backgroundColor: '#a20e0e',
+            borderColor: '#a20e0e',
+            data: [15, 15, 15, 15, 15, 15, 15],
+        }, {
+            label: 'Treino intensivo',
+            backgroundColor: '#b0c049',
+            borderColor: '#b0c049',
+            data: [120, 120, 120, 120, 120, 120, 120],
+        }]
+    };
 
 
 
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
 
 
 </script>
 
 <script>
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 
 
 </script>
