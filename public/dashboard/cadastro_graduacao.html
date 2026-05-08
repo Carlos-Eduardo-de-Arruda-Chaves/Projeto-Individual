@@ -118,7 +118,11 @@
 <script>
     emailVar = sessionStorage.EMAIL_USUARIO
     console.log(emailVar);
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
+    // Definindo os Kruangs possíveis
+    var kruangs = ["Branco", "Branco Ponta Vermelha", "Vermelha", "Vermelha ponta azul claro", "Azul claro", "Azul claro ponta azul escuro", "Azul escuro", "Azul escuro ponta preta", "Preta"]
+    // Definindo as equipes possíveis
+    var equipes = ["Equipe de São Paulo", "Equipe de Minas Gerais", "Equipe do Rio de Janeiro", "Equipe de Santa Catarina"]
+    // Array para armazenar empresas cadastradas para validação de código de ativação 
   // let listaEmpresasCadastradas = [];
 
   function cadastrar_graduacao() {
@@ -199,7 +203,11 @@
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-
+        console.log(kruangVar);
+        sessionStorage.KRUANG_USUARIO = kruangs[kruangVar - 1]
+        console.log(equipeVar);
+        sessionStorage.EQUIPE_USUARIO = equipes[equipeVar - 1]
+        
         if (resposta.ok) {
           cardErro.style.display = "block";
 
@@ -225,6 +233,7 @@
         finalizarAguardar();
       });
 
+      
     return false;
   }
 
