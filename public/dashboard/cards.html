@@ -2,191 +2,229 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Muay Thai | Registro de treino</title>
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+  <script src="./../js/sessao.js"></script>
 
-    <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./../css/dashboards.css">
+  <link rel="stylesheet" href="./../css/estilo.css" />
+  <link rel="shortcut icon" href="../assets/icon/muaythai_valores.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
-
-    <div class="janela">
-
-        <div class="header-left dash-header">
-
-            <h1><span style="color: #B60000;">Muay</span> <span style="color: #7D9BE6;">Thai</span></h1>
-
-            <div class="hello">
-                <h3 style=" font-weight: bold;">Olá, <span id="verificar_mestre"></span> <span id="b_usuario"
-                        style="color:#ffffff;">usuário</span>!</h3>
-            </div>
-            <div class="hello">
-                <h4 style=" font-weight: bold;">KRUANG: <span id="b_kruang" style="color:#ffffff;">Não cadastrado</span>
-                </h4>
-            </div>
-            <div class="hello">
-                <h4 style=" font-weight: bold;">EQUIPE: <span id="b_equipe"
-                        style="color:#ffffff; font-weight: bold;">Não cadastrada</span></h4>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Gráfico</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>DashBoard</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Dicas</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./cadastro_graduacao.html">
-                    <h3>Registrar Kruang/Equipe</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash">
-            <div class="informacao_grafico">
-                <h1>Registros de treinos diários</h1>
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Recomendação de treino
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio" style="border-bottom-left-radius: 20px;">
-                        <p>Insuficiente</p>
-                        <p>&lt;15 Minutos</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Pouco</p>
-                        <p>&lt;30 Minutos</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>60 Minutos</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>acima da média</p>
-                        <p>&gt;90 Minutos</p>
-                    </div>
-                    <div class="item-regua perigo-quente" style="border-bottom-right-radius: 20px;">
-                        <p>Intensivo</p>
-                        <p>&gt;120 Minutos</p>
-                    </div>
-                </div>
-            </div>
-            <div id="alerta">
-            </div>
-            <div style="padding-top: 35px;">
-                <div class="cards">
-                    <div class="grafico">
-                        <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+<body>
+  <!--header inicio-->
+  <div class="header">
+    <div class="container">
+      <h1 class="titulo">Muay <span style="color: #7D9BE6;">Thai</span></h1>
+      <ul class="navbar" style="width: 500px;">
+        <li>
+          <a href="mural.html">Mural de dicas</a>
+        </li>
+        <li>
+          <a href="dashboard.html">Dashboard</a>
+        </li>
+        <li>|</li>
+        <li class="agora">
+          <a href="#">Registrar treino</a>
+        </li>
+        <li>
+          <a href="cadastro_graduacao.html">Registrar Kruang</a>
+        </li> 
+      </ul>
     </div>
+  </div>
+  <!--header fim-->
 
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card card-cadastro">
+        <h2>Registre seu treino de hoje!</h2>
+        <div class="formulario">
+          <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+          <!--
+          <div class="campo">
+            <span>Código de ativação:</span>
+            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
+          </div>
+          -->
+          <div class="campo">
+            <span>Tempo:</span>
+                <input type="text" id="id_tempo" placeholder="Hrs:Min:Seg">
+          </div>
+          <button class="botao" onclick="registrar_treino()">Cadastrar</button>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+          <img src="./../assets/circle-loading.gif" id="loading-gif" />
+        </div>
+
+        <div id="div_erros_login"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--footer inicio-->
+  <div class="footer">
+    <div class="container">
+      <!-- <span>Autor: Carlos Eduardo de Arruda Chaves</span> -->
+      <h1>Muay Thai é <span style="color: #B60000;">luta</span>, não <span style="color: #B60000;">briga</span></h1>
+      <!--<span>Aluno SPTech &hearts;</span> -->
+    </div>
+    <p style="display: flex; justify-content: space-between; width: 90%;">
+      <span>Autor: Carlos Eduardo de Arruda Chaves</span>
+      <span>Feito por Aluno SPTech &hearts;</span>
+    </p>
+  </div>
+  <!--footer fim-->
 </body>
 
-<script>
-    email = sessionStorage.EMAIL_USUARIO
-    id = sessionStorage.ID_USUARIO
-    console.log(email);
-    console.log(id);
-    if (id <= 4) verificar_mestre.innerHTML = `Mestre`
-
-
-
-    // function exibirAquarios() {
-    //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-    //         document.getElementById("cardAquarios").innerHTML += `
-    //                 <div class="card-aquario">
-    //                     <div class="title-aquario">
-    //                         <h1>${item.descricao}</h1>
-    //                     </div>
-    //                     <div class="desc-aquario">
-    //                     <div class="temperatura">
-    //                         <p id="temp_aquario_${item.id}">-°C</p>
-    //                     </div>
-    //                     <div class="cor-alerta" id="card_${item.id}"></div>
-    //                 </div>
-    //                 </div>
-    //                 `
-    //     });
-    // }
-
-    const labels = [
-        '2026-04-29',
-        '2026-04-30',
-        '2026-05-01',
-        '2026-05-02',
-        '2026-05-03',
-        '2026-05-04',
-        '2026-05-05'
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Treino insuficiente',
-            backgroundColor: '#a20e0e',
-            borderColor: '#a20e0e',
-            data: [15, 15, 15, 15, 15, 15, 15],
-        }, {
-            label: 'Treino intensivo',
-            backgroundColor: '#b0c049',
-            borderColor: '#b0c049',
-            data: [120, 120, 120, 120, 120, 120, 120],
-        }]
-    };
-
-
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
-
-
-</script>
-
-<script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
-
-</script>
-
 </html>
+
+<script>
+  emailVar = sessionStorage.EMAIL_USUARIO
+  idVar = sessionStorage.ID_USUARIO;
+  console.log(emailVar);
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  // let listaEmpresasCadastradas = [];
+
+  function registrar_treino() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var tempoVar = id_tempo.value
+    // var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    // var codigoVar = codigo_input.value;
+    // var idEmpresaVincular
+
+    // Verificando se há algum campo em branco
+    if (
+      tempoVar == "" 
+      // confirmacaoSenhaVar == "" ||
+      // codigoVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+      // } else if (senhaVar != confirmacaoSenhaVar) {
+      //   cardErro.style.display = "block";
+      //   mensagem_erro.innerHTML =
+      //     "(Confirmação de senha incorreta)";
+
+      //   finalizarAguardar();
+      //   return false;
+      // } else if (!emailVar.includes("@")) {
+      //   cardErro.style.display = "block";
+      //   mensagem_erro.innerHTML =
+      //     "(Email inválido)";
+
+      //   finalizarAguardar();
+      //   return false;
+      // 
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+    /*
+    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        idEmpresaVincular = listaEmpresasCadastradas[i].id
+        console.log("Código de ativação válido.");
+        break;
+      } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        finalizarAguardar();
+      }
+    }
+    */
+
+    // Enviando o valor da nova input
+    fetch("/tempo/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        tempoServer: tempoVar,
+        emailServer: emailVar,
+        idServer: idVar// ,
+        // idEmpresaVincularServer: idEmpresaVincular
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Informações registradas com sucesso!";
+
+          setTimeout(() => {
+            window.location = "dashboard.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          cardErro.style.display = "block"
+          // mensagem_erro.innerHTML = "(E-mail já cadastrado no sistema)";
+          finalizarAguardar();
+          return false;
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+
+    return false;
+  }
+
+  // Listando empresas cadastradas 
+  /*
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresasCadastradas.push(empresa);
+
+            console.log("listaEmpresasCadastradas")
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+      */
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

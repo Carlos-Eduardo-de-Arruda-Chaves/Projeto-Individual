@@ -10,16 +10,13 @@ function autenticar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(kruang, equipe, email/*, fkEmpresa*/) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", kruang, equipe, /*, fkEmpresa*/);
+function cadastrar(tempo, id/*, fkEmpresa*/) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", tempo /*, fkEmpresa*/);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        UPDATE usuario 
-    SET fk_graduacao = '${kruang}',
-        fk_equipe = '${equipe}'
-    WHERE email = '${email}'; 
+        INSERT INTO registro_treino (tempo_treino, fk_usuario) VALUES ('${tempo}', ${id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

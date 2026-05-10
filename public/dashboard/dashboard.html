@@ -49,13 +49,13 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Gráfico </h3>
+                    <h3>Registrar treino</h3>
                 </a>
             </div>
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3>DashBoard</h3>
 
             </div>
 
@@ -125,6 +125,10 @@
 </html>
 
 <script>
+    id = sessionStorage.ID_USUARIO
+    console.log(id);
+    if (id <= 4) verificar_mestre.innerHTML = `Mestre`
+    
     console.log(sessionStorage.KRUANG_USUARIO);
 
     b_kruang.innerHTML = sessionStorage.KRUANG_USUARIO;

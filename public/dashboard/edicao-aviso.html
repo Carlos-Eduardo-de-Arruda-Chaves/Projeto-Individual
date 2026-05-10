@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <title>Muay Thai | edição de dicas</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -44,13 +44,13 @@
 
             <div class="btn-nav-white">
                 <a href="cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Registrar treino</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                    <h3>Dashboard</h3>
                 </a>
             </div>
 
@@ -114,6 +114,9 @@
 </html>
 
 <script>
+    id = sessionStorage.ID_USUARIO
+    console.log(id);
+    if (id <= 4) verificar_mestre.innerHTML = `Mestre`
 
     b_kruang.innerHTML = sessionStorage.KRUANG_USUARIO;
     b_equipe.innerHTML = sessionStorage.EQUIPE_USUARIO;

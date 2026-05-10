@@ -21,20 +21,20 @@
   <div class="header">
     <div class="container">
       <h1 class="titulo">Muay <span style="color: #7D9BE6;">Thai</span></h1>
-      <ul class="navbar">
-        <!-- <li>
-          <a href="index.html">Inicial</a>
+      <ul class="navbar" style="width: 500px;">
+        <li>
+          <a href="mural.html">Mural de dicas</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="dashboard.html">Dashboard</a>
         </li>
         <li>|</li>
         <li>
-          <a href="login.html">Login</a>
+          <a href="cards.html">Registrar treino</a>
         </li>
         <li class="agora">
-          <a href="#">Cadastro</a>
-        </li> -->
+          <a href="#">Registrar Kruang</a>
+        </li> 
       </ul>
     </div>
   </div>
@@ -83,10 +83,6 @@
               <option value="4">Equipe de Santa Catarina</option>
             </select>
           </div>
-          <div class="campo">
-            <span>Data de quando começou a treinar:</span>
-            <input id="data_input" type="date" placeholder="2018-09-14" />
-          </div>
           <button class="botao" onclick="cadastrar_graduacao()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -132,7 +128,6 @@
     // Agora vá para o método fetch logo abaixo
     var kruangVar = kruang_input.value;
     var equipeVar = equipe_input.value;
-    var dataVar = data_input.value;
     // var confirmacaoSenhaVar = confirmacao_senha_input.value;
     // var codigoVar = codigo_input.value;
     // var idEmpresaVincular
@@ -140,8 +135,7 @@
     // Verificando se há algum campo em branco
     if (
       kruangVar == "" ||
-      equipeVar == "" ||
-      dataVar == "" // ||
+      equipeVar == "" 
       // confirmacaoSenhaVar == "" ||
       // codigoVar == ""
     ) {
@@ -196,7 +190,6 @@
         // Agora vá para o arquivo routes/usuario.js
         kruangServer: kruangVar,
         equipeServer: equipeVar,
-        dataServer: dataVar,
         emailServer: emailVar// ,
         // idEmpresaVincularServer: idEmpresaVincular
       }),
@@ -215,7 +208,7 @@
             "Informações registradas com sucesso!";
 
           setTimeout(() => {
-            window.location = "cards.html";
+            window.location = "dashboard.html";
           }, "2000");
 
           limparFormulario();

@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/graduacaoModel");
+var usuarioModel = require("../models/tempoModel");
 // var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
@@ -62,24 +62,23 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var kruang = req.body.kruangServer;
-    var equipe = req.body.equipeServer;
-    var email = req.body.emailServer;
+    var tempo = req.body.tempoServer;
+    var id = req.body.idServer;
     // var fkEmpresa = req.body.idEmpresaVincularServer;
 
     // Faça as validações dos valores
-    if (kruang == undefined) {
-        res.status(400).send("Seu kruang está undefined!");
-    } else if (equipe == undefined) {
+    if (tempo == undefined) {
+        res.status(400).send("Seu tempo está undefined!");
+    } /*else if (equipe == undefined) {
         res.status(400).send("Sua equipe está undefined!");
-    } /*else if (data == undefined) {
+    } else if (data == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (fkEmpresa == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
     } */ else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(kruang, equipe, email/*, fkEmpresa*/)
+        usuarioModel.cadastrar(tempo, id/*, fkEmpresa*/)
             .then(
                 function (resultado) {
                     res.json(resultado);
