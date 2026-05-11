@@ -41,10 +41,10 @@
     <!-- simulador inicio -->
     <div class="simulador">
         <div class="container">
-            <h2 style="display: flex; justify-content: center; font-size: 40px; color: #121212;">Simulador</h2>
+            <h2 style="display: flex; justify-content: center; font-size: 40px; color: #ffffff; text-shadow: #ffffff 0px 0px 2px;">Simulador de luta!</h2>
             <div class="quadrados">
                 <div class="quadrado">
-                    <h1 style="display: flex; justify-content: center; color: #7D9BE6;">Você</h1>
+                    <h1 style="display: flex; justify-content: center; color: #7D9BE6; text-shadow: 0px 0px 10px #7D9BE6;">Você</h1>
                     <p style="padding: 20px;">
                         <span>Diga o seu Kruang:</span>
                         <select name="kruang" id="kruang">
@@ -66,12 +66,12 @@
                 </div>
                 <div class="quadrado" style="height: 350px;">
                     <div style="height: 250px;">
-                        <h1 style="display: flex; justify-content: center;">Resultado</h1>
+                        <h1 style="display: flex; justify-content: center; text-shadow: #ffffff 0px 0px 5px;">Resultado</h1>
                         <p style="padding: 20px;">
                             <span id="oponente_nome"></span>
                         </p>
                         <p style="padding: 20px;">
-                            <span id="oponente_resultado"></span>
+                            <span id="oponente_resultado" style="display: flex; justify-content: center;"></span>
                         </p>
                     </div>
                     <p style="display: flex; justify-content: center;">
@@ -79,7 +79,7 @@
                     </p>
                 </div>
                 <div class="quadrado">
-                    <h1 style="display: flex; justify-content: center; color: #B60000;">Oponentes</h1>
+                    <h1 style="display: flex; justify-content: center; color: #B60000; text-shadow: 0px 0px 10px #B60000;">Oponentes</h1>
                     <p style="padding: 20px;">
                         <span>Diga o nome do seu oponente:</span>
                         <input style="border-radius: 3px;" type="text" id="id_nome" placeholder="Ex: Thiago">
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div style="display: flex; justify-content: center;">
-                <button onclick="iniciar()" class="caixa_lutar">Lutar</button>
+                <button onclick="iniciar()" class="caixa_lutar">Começar a luta</button>
             </div>
         </div>
     </div>
@@ -150,6 +150,7 @@
     }
 
     function iniciar() {
+        
         contador = 0
         resultados = []
         let nivel = Number(kruang.value)
@@ -175,15 +176,20 @@
         }
         console.log(pontos_totais);
         console.log(pontos_totais_oponente);
-
+        proximo()
     }
 
     let contador = 0
     function proximo() {
+        if(nomes[contador] != undefined && resultados[contador] != undefined){
         oponente_nome.innerHTML = `Oponente: ${nomes[contador]}`
         console.log(resultados[contador]);
         oponente_resultado.innerHTML = `Resultado provável: ${resultados[contador]}`
         contador++
+        } else {
+            oponente_nome.innerHTML = ``
+            oponente_resultado.innerHTML = `<span style="text-shadow: 0px 0px 2px #ffffff; font-size: 20px; font-weight: bold"> Os oponentes terminaram. </span>`
+        }
     }
 </script>
 
