@@ -19,7 +19,8 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var graduacaoRouter = require("./src/routes/graduacao");
-var tempoRouter = require("./src/routes/tempo")
+var tempoRouter = require("./src/routes/tempo");
+var graficoRouter = require("./src/routes/grafico");
 // var medidasRouter = require("./src/routes/medidas");
 // var aquariosRouter = require("./src/routes/aquarios");
 // var empresasRouter = require("./src/routes/empresas");
@@ -35,6 +36,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/graduacao", graduacaoRouter);
 app.use("/tempo", tempoRouter)
+app.use("/grafico", graficoRouter)
 // app.use("/medidas", medidasRouter);
 // app.use("/aquarios", aquariosRouter);
 // app.use("/empresas", empresasRouter);

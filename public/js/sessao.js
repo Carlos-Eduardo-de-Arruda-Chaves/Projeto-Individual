@@ -4,15 +4,21 @@ function validarSessao() {
     var nome = sessionStorage.NOME_USUARIO;
     var kruang = sessionStorage.KRUANG_USUARIO;
     var equipe = sessionStorage.EQUIPE_USUARIO;
+    var data = sessionStorage.DATA_USUARIO;
+    var tempo_treino = sessionStorage.TEMPO_TREINO_USUARIO;
 
     var b_usuario = document.getElementById("b_usuario");
     var b_kruang = document.getElementById("b_kruang");
     var b_equipe = document.getElementById("b_equipe");
+    var b_data = document.getElementById("b_data");
+    var b_tempo_treino = document.getElementById("b_tempo_treino");
 
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
         b_kruang.innerHTML = kruang;
         b_equipe.innerHTML = equipe;
+        b_data.innerHTML = data;
+        b_tempo_treino = tempo_treino;
     } else {
         window.location = "../login.html";
     }
