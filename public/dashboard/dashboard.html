@@ -116,7 +116,7 @@
             </div>
             <div id="graficos">
                 <div class="graph">
-                    <canvas id="myChartCanvas"></canvas>
+                    <canvas id="myChartCanvas" style="background-color: rgb(255, 255, 255); border-radius: 10px;"></canvas>
                 </div>
             </div>
         </div>
@@ -128,9 +128,13 @@
 </html>
 
 <script>
-    id = sessionStorage.ID_USUARIO
+
+    let myChart;
+
+
+    id = sessionStorage.ID_USUARIO;
     console.log(id);
-    if (id <= 4) verificar_mestre.innerHTML = `Mestre`
+    if (id <= 4) verificar_mestre.innerHTML = `Mestre`;
 
     console.log(sessionStorage.KRUANG_USUARIO);
     console.log(sessionStorage.EMAIL_USUARIO);
@@ -236,10 +240,19 @@
             })
             .then(function (dados) {
                 console.log(dados);
-                plotarGrafico(dados);
+                // variavel para guardar os ultimos valores para ir na dashboard (no meu caso, 7 registros)
+                let ultimos_registros = [];
+                // criando o for que vai fazer a seleção dos ultimos 7 registros
+                for (let i = dados.length - 7; i < dados.length; i++) {
+                    // condicional para não dar erro, caso tenha menos de 7 registros
+                    if (i >= 0) {
+                        ultimos_registros.push(dados[i]);
+                    }
+                }
 
-                console.log(`teste`);
-                
+                console.log(ultimos_registros);
+
+                plotarGrafico(ultimos_registros);
             });
     }
 
@@ -257,44 +270,104 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Tempo de treino',
+                label: 'Tempo de treino (minutos)',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(75, 192, 192)',
+                borderColor: '#7D9BE6',
                 tension: 0.1
-            }
-            ]
+            },
+            {
+                label: 'Treino intensivo',
+                data: [],
+                fill: false,
+                borderColor: '#e89435',
+                tension: 0.1
+            },
+            {
+                label: 'Treino insuficiente',
+                data: [],
+                fill: false,
+                borderColor: '#B60000',
+                tension: 0.1
+            }]
         };
+        // percorrendo todos os registros que foram recebidos
+        for (let i = 0; i < resposta.length; i++) {
+            let registro = resposta[i];
+            // formatando a data
+            let dataFormatada = registro.data
+                // split() divide a string de acordo com o parametro passado
+                .split('T')[0]
+                .split('-')
+                // reverse() inverte a ordem da array, para deixar o dia em forma de "20", "06", "2026" por exemplo
+                .reverse()
+                // join junta os elementos da array com "/", assim ficando correto e certo para ver a data do registro
+                .join('/');
+            // pega essa data formatada para dentro de labels
+            labels.push(dataFormatada);
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.data.split('T')[0].split('-').reverse().join('-'));
-            dados.datasets[0].data.push(registro.tempo_treino);
-            // dados.datasets[1].data.push(registro.temperatura);
+            // tratamento do tempo de "03:00:00" para "180"(minutos) por exemplo
+            // divide a string pelo ":"
+            let tempo = registro.tempo_treino.split(':');
+            // valor da array 0, sendo a hora
+            let horas = parseInt(tempo[0]);
+            // valor da array 1, sendo os minutos
+            let minutos = parseInt(tempo[1]);
+            // valor da array 2, sendo os segundos
+            let segundos = parseInt(tempo[2]);
+            // é feito o calculo para fazer a conversão
+            let totalMinutos = (horas * 60) + minutos + (segundos / 60);
+            // a array dados.datasets[0] pega esse valor
+            dados.datasets[0].data.push(totalMinutos);
+            dados.datasets[1].data.push(120);
+            dados.datasets[2].data.push(15);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+        // console.log('----------------------------------------------')
+        // console.log('O gráfico será plotado com os respectivos valores:')
+        // console.log('Labels:')
+        // console.log(labels)
+        // console.log('Dados:')
+        // console.log(dados.datasets)
+        // console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
             data: dados,
+            // option configura o comportamento do gráfico
+            options: {
+                // scales fala as escalas, no caso x e y
+                scales: {
+                    // selecionando o eixo y (tempo de treino)
+                    y: {
+                        // ticks é os valores que aparecem no eixo, o tempo que o usuário treinou em minutos, por exemplo 180
+                        ticks: {
+                            // o callback permite modificar como os números serão exibidos.
+                            callback: function (value) {
+                                // fazendo a conversão
+                                let horas = Math.floor(value / 60);
+                                let minutos = Math.floor(value % 60);
+                                // transforma o número em texto / padStart() adiciona um "0" na frente, neste caso ou seja, "3" vira "03"
+                                horas = String(horas).padStart(2, '0');
+                                minutos = String(minutos).padStart(2, '0');
+                                // retorna a string depois de configurada
+                                return `${horas}:${minutos}:00`;
+                            }
+                        }
+                    }
+                }
+            }
         };
 
+        // se já existir um gráfico, ele é destruido
+        if (myChart) {
+            myChart.destroy();
+        }
+
         // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas`),
+        myChart = new Chart(
+            document.getElementById('myChartCanvas'),
             config
         );
 
