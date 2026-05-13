@@ -79,7 +79,7 @@
 
         <div class="dash">
             <div class="informacao_grafico">
-                <h1 style="text-shadow: 0px 0px 5px #7D9BE6;">Registros de treinos diários</h1>
+                <h1 style="text-shadow: 0px 0px 5px #7D9BE6;">Registros de treino dos últimos 7 dias</h1>
             </div>
             <div class="area-parametros-alerta">
                 <p class="titulo-legenda">
@@ -124,18 +124,40 @@
                     <span style="font-size: 450%;" id="ultimo_treino">0</span>
                 </div>
                 <div class="box-treinos-alertas">
-                    <h2>Treinos curtos</h2>
-                    <span style="font-size: 450%;" id="treinos_curtos">0</span>
+                    <h2>Treinos intensivos</h2>
+                    <span style="font-size: 450%;" id="treinos_intensivos">0</span>
                 </div>
             </div>
-            <div class="box-informativa" style="justify-content: space-evenly;">
-                <div class="box-alerta-critico">
-                    <h2>Treinos Insuficientes</h2>
-                    <span style="font-size: 450%;">0</span>
-                </div>
-                <div class="box-ultimo-tempo">
-                    <h2>Tempo do último treino</h2>
-                    <span style="font-size: 450%;">0</span>
+            <div class="box-KPIs" style="justify-content: space-evenly;">
+                <div class="KPIs">
+                    <div class="treinos-kpi">
+                        <div class="cor-kpi" style="border: 3px solid grey; background-color: black;">
+                        </div>
+                        <div class="descricao-kpi">
+                            Seu tempo de treino
+                        </div>
+                    </div>
+                    <div class="treinos-kpi">
+                        <div class="cor-kpi" style="border: 3px solid rgb(79, 6, 6); background-color: #B60000;">
+                        </div>
+                        <div class="descricao-kpi">
+                            Treino insuficiente
+                        </div>
+                    </div>
+                    <div class="treinos-kpi">
+                        <div class="cor-kpi" style="border: 3px solid rgb(116, 91, 46); background-color: #e89435;">
+                        </div>
+                        <div class="descricao-kpi">
+                            Treino intensivo
+                        </div>
+                    </div>
+                    <div class="treinos-kpi">
+                        <div class="cor-kpi" style="border: 3px solid #546181; background-color: #7D9BE6;">
+                        </div>
+                        <div class="descricao-kpi">
+                            Tempo ideal
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="graficos">
@@ -285,7 +307,7 @@
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta) {
 
-        let treinos_30min = 0
+        let treinos_120min = 0
         let treinos_15min = 0
 
         console.log('iniciando plotagem do gráfico...');
@@ -300,7 +322,7 @@
                 label: 'Tempo de treino (minutos)',
                 data: [],
                 fill: false,
-                borderColor: '#7D9BE6',
+                borderColor: 'black',
                 tension: 0.1
             },
             {
@@ -314,7 +336,7 @@
                 label: 'Treinos curtos',
                 data: [],
                 fill: false,
-                borderColor: '#d65c5c',
+                borderColor: '#7D9BE6',
                 tension: 0.1
             },
             {
@@ -352,13 +374,13 @@
             // é feito o calculo para fazer a conversão
             let totalMinutos = (horas * 60) + minutos + (segundos / 60);
 
-            if(totalMinutos < 30 && totalMinutos >= 15){
-                treinos_30min = treinos_30min + 1
+            if(totalMinutos > 120){
+                treinos_120min = treinos_120min + 1
             } else if(totalMinutos < 15){
                 treinos_15min = treinos_15min + 1
             }
 
-            if(treinos_30min > 0) treinos_curtos.innerHTML = `<span style="color: yellow">${treinos_30min}<span>`
+            if(treinos_120min > 0) treinos_intensivos.innerHTML = `<span style="color: #e89435">${treinos_120min}<span>`
             if(treinos_15min > 0) treinos_insuficientes.innerHTML = `<span style="color: red">${treinos_15min}<span>`
             if(i == (resposta.length - 1)){
                 ultimo_treino.innerHTML = `${horas}:${minutos}:${segundos}`;
@@ -367,7 +389,7 @@
             // a array dados.datasets[0] pega esse valor
             dados.datasets[0].data.push(totalMinutos);
             dados.datasets[1].data.push(120);
-            dados.datasets[2].data.push(30);
+            dados.datasets[2].data.push(60);
             dados.datasets[3].data.push(15);
         }
 
@@ -383,7 +405,7 @@
         const config = {
             type: 'line',
             data: dados,
-            // option configura o comportamento do gráfico
+            // options configura o comportamento do gráfico
             options: {
                 // scales fala as escalas, no caso x e y
                 scales: {
@@ -403,6 +425,14 @@
                                 return `${horas}:${minutos}:00`;
                             }
                         }
+                    }
+                },
+                // ainda dentro de options, plugins, ele vai adicionar uma configuração
+                plugins: {
+                    // legend é a legenda que está acima do gráfico
+                    legend: {
+                        // coloquei como false para personalizar da forma mais adequada e não deixar visualmente "poluído"
+                        display: false
                     }
                 }
             }

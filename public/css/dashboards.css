@@ -291,6 +291,7 @@ body {
   width: 80%;
   margin: auto;
   padding-top: 10px;
+  max-height: 100%;
 }
 
 .tituloGraficos {
@@ -496,3 +497,45 @@ canvas {
   flex-direction: column;
   align-items: center;
 }
+
+.box-KPIs{
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  background-color: #161618;
+  justify-content: center;
+  align-items: center;
+}
+
+.KPIs{
+  display: flex;
+  height: 80%;
+  width: 92%;
+  background-color: #303030;
+  border-radius: 20px;
+  justify-content: space-around;
+}
+
+.treinos-kpi{
+  display: flex;
+  height: 100%;
+  width: 25%;
+  background-color: #303030;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cor-kpi{
+  display: flex;
+  height: 30%;
+  width: 20%;
+  border-radius: 5px;
+}
+
+.descricao-kpi{
+  color: white;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
