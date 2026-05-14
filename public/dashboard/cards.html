@@ -117,7 +117,7 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "(Insira o registro)";
 
       finalizarAguardar();
       return false;
@@ -136,6 +136,13 @@
       //   finalizarAguardar();
       //   return false;
       // 
+    } else if(Number(tempoVar.split(':')[0]) > 24){
+      console.log(Number(tempoVar.split(':')[0]));
+      
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Verifique o tempo de treino)";
+      finalizarAguardar();
+      return false;
     } else {
       setInterval(sumirMensagem, 5000);
     }
