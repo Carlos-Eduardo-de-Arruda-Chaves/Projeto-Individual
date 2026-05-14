@@ -429,6 +429,11 @@ canvas {
   padding: 2% 5%;
 }
 
+.btn-nav-white:hover{
+ background-color: #7D9BE6;
+ transform: scale(1.02);
+}
+
 .btn-nav-white h3 {
   color: #B60000;
   padding: 0;
@@ -452,6 +457,11 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+.btn-logout:hover{
+ background-color: #6c0202;
+ transform: scale(1.02);
 }
 
 /* INFORMAÇÕES DO GRÁFICO*/

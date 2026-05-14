@@ -298,6 +298,11 @@ body {
   margin-top: 20px;
 }
 
+.botao:hover{
+ background-color: #6c0202;
+ transform: scale(1.02);
+}
+
 .loading-div {
   width: 50px;
   display: none;
@@ -321,11 +326,11 @@ body {
 
 .card_erro {
   display: none;
-  background-color: #fff;
+  background-color: #d3b8b8;
   color: black;
   width: 230px;
   position: fixed;
-  border-radius: 4px;
+  border-radius: 20px;
   border: #B60000 3px solid;
   padding: 10px;
   margin-right: 10%;
@@ -417,6 +422,11 @@ input {
   background-color: #B60000; 
   color: rgb(207, 207, 207); 
   font-size: 20px;
+}
+
+.caixa_lutar:hover{
+ background-color: #6c0202;
+ transform: scale(1.02);
 }
 
 .container .quadrados p{
