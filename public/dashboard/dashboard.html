@@ -155,7 +155,7 @@
                         <div class="cor-kpi" style="border: 3px solid #546181; background-color: #7D9BE6;">
                         </div>
                         <div class="descricao-kpi">
-                            Tempo ideal
+                            Treino médio
                         </div>
                     </div>
                 </div>
@@ -336,7 +336,7 @@
                 tension: 0.1
             },
             {
-                label: 'Treinos curtos',
+                label: 'Treinos médios',
                 data: [],
                 fill: false,
                 borderColor: '#7D9BE6',
@@ -530,15 +530,21 @@
                     let totalMinutos = (horas * 60) + minutos + (segundos / 60);
 
                     // remove a primeira label.
+                    
+                    // [27/05/2026, 28/05/2026, 29/05/2026,]
                     dados.labels.shift();
+                    // [28/05/2026, 29/05/2026]
 
-                    // removendo o primeiro item dos datasets.
+                    // removendo o primeiro item dos datasets (tempo_treino do usuario, treino intensivo, treino curto e tempo médio).
                     for (let i = 0; i < dados.datasets.length; i++) {
                         dados.datasets[i].data.shift();
                     }
 
                     // adicionando a nova label.
+
+                    // [28/05/2026, 29/05/2026]
                     dados.labels.push(dataFormatada);
+                    // [28/05/2026, 29/05/2026, 30/05/2026]
 
                     // adicionando os novos valores.
                     dados.datasets[0].data.push(totalMinutos);

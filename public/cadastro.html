@@ -148,6 +148,13 @@
 
       finalizarAguardar();
       return false;
+    } else if (senhaVar.length < 8) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Coloque uma senha acima de 8 dígitos)";
+
+      finalizarAguardar();
+      return false;
     } else {
       setInterval(sumirMensagem, 5000);
     }
